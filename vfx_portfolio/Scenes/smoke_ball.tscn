@@ -1,0 +1,86 @@
+[gd_scene load_steps=15 format=3 uid="uid://lu278of463gr"]
+
+[ext_resource type="Shader" uid="uid://b81bu2r65irpu" path="res://Assets/shaders/smoke_shader.tres" id="1_4sinj"]
+[ext_resource type="Texture2D" uid="uid://d1x3jy6b0g55c" path="res://Assets/Texture/kars-smokenew.jpg" id="2_yqyqu"]
+
+[sub_resource type="Gradient" id="Gradient_vsd05"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qpjh6"]
+gradient = SubResource("Gradient_vsd05")
+
+[sub_resource type="Gradient" id="Gradient_qsvn1"]
+colors = PackedColorArray(0, 0, 0, 1, 0.766569, 0.0198453, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ug8rs"]
+gradient = SubResource("Gradient_qsvn1")
+fill_from = Vector2(1, 0.863248)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63bud"]
+render_priority = 0
+shader = ExtResource("1_4sinj")
+shader_parameter/GradientScale = Vector2(1, 0.5)
+shader_parameter/Tint = Color(0.725444, 0.48258, 0.965369, 1)
+shader_parameter/uvScale = Vector2(1, 2)
+shader_parameter/uvMotion = Vector2(-0.75, 0.25)
+shader_parameter/Alpha = 1.0
+shader_parameter/GradientOverlay = SubResource("GradientTexture2D_ug8rs")
+shader_parameter/MainTexture = ExtResource("2_yqyqu")
+shader_parameter/AlphaTexture = SubResource("GradientTexture1D_qpjh6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_gq0jc"]
+
+[sub_resource type="Gradient" id="Gradient_7vccy"]
+colors = PackedColorArray(0, 0, 0, 1, 0.766569, 0.0198453, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_akehs"]
+gradient = SubResource("Gradient_7vccy")
+fill_from = Vector2(0.961538, 0.871795)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm1et"]
+render_priority = 0
+shader = ExtResource("1_4sinj")
+shader_parameter/GradientScale = Vector2(1, 1)
+shader_parameter/Tint = Color(0.725444, 0.48258, 0.965369, 1)
+shader_parameter/uvScale = Vector2(2, 2)
+shader_parameter/uvMotion = Vector2(-1.15, 1)
+shader_parameter/Alpha = 1.0
+shader_parameter/GradientOverlay = SubResource("GradientTexture2D_akehs")
+shader_parameter/MainTexture = ExtResource("2_yqyqu")
+shader_parameter/AlphaTexture = ExtResource("2_yqyqu")
+
+[sub_resource type="SphereMesh" id="SphereMesh_gy0gd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4nc6"]
+render_priority = 0
+shader = ExtResource("1_4sinj")
+shader_parameter/GradientScale = Vector2(1, 1)
+shader_parameter/Tint = Color(0.725444, 0.48258, 0.965369, 1)
+shader_parameter/uvScale = Vector2(1, 1)
+shader_parameter/uvMotion = Vector2(-0.25, 0.125)
+shader_parameter/Alpha = 1.0
+shader_parameter/GradientOverlay = SubResource("GradientTexture2D_akehs")
+shader_parameter/MainTexture = ExtResource("2_yqyqu")
+shader_parameter/AlphaTexture = ExtResource("2_yqyqu")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2ll7y"]
+
+[node name="smoke_ball" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.71425, 0)
+
+[node name="smoke_core" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.45, 0, 0, 0, 6.45, 0, 0, 0, 6.45, 0, 0, 0)
+sorting_offset = -2.0
+material_override = SubResource("ShaderMaterial_63bud")
+mesh = SubResource("SphereMesh_gq0jc")
+
+[node name="smoke_out" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.7494, 0, 0, 0, 6.7494, 0, 0, 0, 6.7494, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_nm1et")
+mesh = SubResource("SphereMesh_gy0gd")
+
+[node name="smoke_inside" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.63, 0, 0, 0, 6.63, 0, 0, 0, 6.63, 0, 0, 0)
+sorting_offset = -1.0
+material_override = SubResource("ShaderMaterial_u4nc6")
+mesh = SubResource("SphereMesh_2ll7y")
