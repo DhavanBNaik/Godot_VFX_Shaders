@@ -1,6 +1,7 @@
 # 🎨 Godot VFX Portfolio Project
 
-This project is a collection of stylized visual effects (VFX) built in **Godot Engine** as part of a personal technical art portfolio. It includes real-time shader work, particle effects, destruction systems, and scripting—highlighting skills relevant to the **Technical Artist** role.
+This project is a collection of stylized visual effects (VFX) developed in **Godot Engine** as part of a portfolio submission for an MSc programme application. It demonstrates practical skills in real-time shaders, particle systems, object destruction, and scripting, showcasing both creative and technical capabilities.
+
 
 ---
 
